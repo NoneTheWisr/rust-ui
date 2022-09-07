@@ -1,0 +1,11 @@
+I like the idea of having a widget tree. Having an actual tree-like data structure somewhere inside the library code. I don't want for the widget tree to be implicitly defined with object composition.
+
+I'd also like to have messaging. Don't know how it's going to work yet. Nor do I know much about messaging in general...
+
+I'm also thinking about using some kind of labels or ids for widgets. That seems like a necessity rather than a choice because of the two other points on the list. I need a way to refer to different widgets. I suppose it's not necessary to have "global", "static" handles for every static widget — I could in theory navigate the widget tree and find what I'm looking for, but... I'm not sure this approach will always work and it's messy... I don't like it. So... this could either be done with integers (ids) or with strings (labels). In the case of integers you'd call some method that registers a new widget and receive an id. In the case of strings you'd register a widget with a unique label and then use that to refer to the widget. I suppose in the latter case I'd still have to use ids. Otherwise I (or the user) would have to generate random unique strings for dynamic widgets. So... The label approach is actually a hybrid between these hypothetical "pure" label and ids.
+
+------
+
+Regarding the widget tree... I was sort of thinking of "banning" composition all together, but then... What if there is some "natural" coupling between components? I guess this is related to custom widgets. I don't think you'd want to use messaging in this case. Although... maybe it depends on what kind of messaging it is. Maybe elm "messaging" (I don't think you can really call that messaging, but I'm referring to update messages) would work fine.
+
+Maybe I could have a widget that... manages messaging? Or... not really messaging. Basically I could have some kind of a root / container widget at the top of the widget tree and then I could also put something similar inside non-root nodes... I don't know where I'm going with this.
